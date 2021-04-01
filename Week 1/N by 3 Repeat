@@ -1,0 +1,30 @@
+int Solution::repeatedNumber(const vector<int> &A) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    int N=A.size();
+    int ele[N], count[N];
+    for(int i=0; i<N; i++)
+    count[i]=0;
+    if(N>2){
+    for(int i=0; i<N; i++){
+    for(int j=i+1; j<N; j++){
+        if(A[i]==A[j]){
+            count[i]++;
+            ele[i]=A[i];
+            }
+        }
+    }
+    }
+    else{
+        ele[0]=A[0];
+    }
+    int n=N/3;
+    for(int i=0; i<N; i++){
+    if(count[i]>=n){
+        return ele[i];
+    }
+    }
+    return -1;
+}
