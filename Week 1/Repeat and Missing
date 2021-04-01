@@ -1,0 +1,21 @@
+vector<int> Solution::repeatedNumber(const vector<int> &A){
+    int N=A.size();
+    vector<int> ans(2, 0);
+    long long int sumN=N, sumV=0;
+    long long int m, r, x, y, z, i; 
+    long long int sumSN=N*N, sumSV=0;
+    for(i=0; i<N; i++){
+        sumN=sumN+i;
+        sumSN+=(i*i);
+        sumV=sumV+A[i];
+        sumSV=sumSV+(A[i]*A[i]);
+    }
+    x=sumN-sumV;
+    y=sumSN-sumSV;
+    z=(y/x);
+    m=(z+x)/2;
+    r=(z-x)/2;
+    ans[0]=r;
+    ans[1]=m;
+    return (ans);
+}
