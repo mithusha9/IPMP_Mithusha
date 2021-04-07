@@ -1,0 +1,28 @@
+vector<vector<int> > Solution::threeSum(vector<int> &A) {
+    vector<vector<int> > vect;
+    long int l=0, x, y, z, N;
+    N=A.size();
+    if(N<=2)
+        return vect;
+    sort(A.begin(), A.end());
+    for(long i=0; i<A.size()-2; i++){
+        x=A[i];
+        if(x>0)
+            break;
+        if (i > 0 && x == A[i - 1]) continue;
+        for (long j = i + 1, k = N - 1; j < k;) {
+        y=A[j];
+        z=A[k];
+        if((x+y+z)==0){
+                vect.push_back(vector<int>({x, y, z}));
+            while (j<k&&y==A[++j]);
+            while (j<k&&z==A[--k]);
+            }
+            else if((x+y+z)>0){
+                    k--;}
+                else{
+                 j++;}
+        }
+    }
+    return vect;
+}
