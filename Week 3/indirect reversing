@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+ using namespace std;
+class Node{
+    public:
+    int data;
+    Node *next;
+};
+void printRevrse(Node *head){
+    if(head==0)
+    return;
+    printRevrse(head->next);
+    std::cout<<head->data<<" ";
+}
+void push(Node **head, char data){
+    Node *newnode= new Node();
+    newnode->data=data;
+    newnode->next = (*head); 
+    (*head) = newnode; 
+} 
+int main() {
+	//code
+	 Node* head = NULL; 
+    push(&head, 4); 
+    push(&head, 3); 
+    push(&head, 2); 
+    push(&head, 1); 
+      
+    printRevrse(head); 
+    return 0; 
+}
