@@ -1,0 +1,39 @@
+struct Node* getNextRight(Node* p){
+        struct Node*temp=p->nextRight;
+        while(temp!=NULL){
+        if(temp->left!=NULL)
+            return temp->left;
+        if(temp->right!=NULL)
+            return temp->right;
+        temp=temp->nextRight;
+        }
+         return NULL;
+    }
+    void connect(Node *root)
+    {
+       // Your Code Here
+    if(root==NULL)
+    return ;
+    if(root->nextRight!=NULL){
+        connect(root->nextRight);
+    } 
+    while(root){
+        struct Node* temp=root;
+        while(temp){
+            if(temp->left){
+                if(temp->right){
+                    temp->left->nextRight=temp->right;
+                }
+                else
+                    temp->left->nextRight=getNextRight(temp);
+            }
+            if(temp->right)
+                temp->right->nextRight=getNextRight(temp);
+            temp=temp->nextRight;
+        }
+        if(root->left)
+            root=root->left;
+        if(root->right)
+            root=root->right;
+        root=getNextRight(root);
+    }
