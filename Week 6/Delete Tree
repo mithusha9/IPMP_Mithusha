@@ -1,0 +1,7 @@
+void del(struct node *root){
+  if(root==NULL)
+    return;
+  del(root->left);
+  del(root->right);
+  delete root;
+}
